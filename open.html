@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenLiterature</title>
+</head>
+<body>
+  <h3>原著PDFを開く</h3>
+  <p id="filename"></p>
+  <a id="openLink" href="#" hidden>PDF Expertで開く</a>
+  <p id="message"></p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+    const link = document.getElementById("openLink");
+
+    if (file) {
+      document.getElementById("filename").textContent = file;
+      const url = new URL("shortcuts://run-shortcut");
+      url.searchParams.set("name", "OpenLiterature_Test");
+      url.searchParams.set("input", "text");
+      url.searchParams.set("text", file);
+      link.href = url.toString();
+      link.hidden = false;
+    } else {
+      document.getElementById("message").textContent =
+        "PDFファイル名が指定されていません。";
+    }
+  </script>
+</body>
+</html>
