@@ -20,7 +20,7 @@
     if (file) {
       document.getElementById("filename").textContent = file;
       const url = new URL("shortcuts://run-shortcut");
-      url.searchParams.set("name", "OpenLiterature_Test");
+      url.searchParams.set("name", "OpenLiterature");
       url.searchParams.set("input", "text");
       url.searchParams.set("text", file);
       link.href = url.toString();
